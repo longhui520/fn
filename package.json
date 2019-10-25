@@ -1,0 +1,24 @@
+{
+  "name": "fn",
+  "version": "1.0.0",
+  "description": "常用的功能函数",
+  "main": "readFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longhui520/fn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/longhui520/fn/issues"
+  },
+  "homepage": "https://github.com/longhui520/fn#readme",
+  "devDependencies": {
+    "fs-readfile-promise": "^3.0.1",
+    "node-fetch": "^2.6.0"
+  }
+}
