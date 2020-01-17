@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var tree = [
+    {
+        "name": "畜牧水产养殖牲畜",
+        "id": "1",
+        "parentid": "0",
+        "_child": [
+            {
+                "name": "家禽",
+                "id": "5",
+                "parentid": "1",
+                "_child": [],
+                "ischild": false
+            },
+            {
+                "name": "渔业",
+                "id": "6",
+                "parentid": "1",
+                "_child": [],
+                "ischild": false
+            },
+            {
+                "name": "牲畜",
+                "id": "7",
+                "parentid": "1",
+                "_child": [],
+                "ischild": false
+            },
+            {
+                "name": "特色类",
+                "id": "8",
+                "parentid": "1",
+                "_child": [],
+                "ischild": false
+            }
+        ],
+        "ischild": true
+    },
+    {
+        "name": "粮食生产",
+        "id": "2",
+        "parentid": "0",
+        "_child": [
+            {
+                "name": "生产型",
+                "id": "9",
+                "parentid": "2",
+                "_child": [],
+                "ischild": false
+            },
+            {
+                "name": "加工型",
+                "id": "10",
+                "parentid": "2",
+                "_child": [],
+                "ischild": false
+            }
+        ],
+        "ischild": true
+    },
+    {
+        "name": "菜果茶",
+        "id": "3",
+        "parentid": "0",
+        "_child": [
+            {
+                "name": "果业",
+                "id": "11",
+                "parentid": "3",
+                "_child": [
+                    {
+                        "name": "子果业",
+                        "id": "11",
+                        "parentid": "3",
+                        "ischild": false
+                    }
+                ],
+                "ischild": true
+            },
+            {
+                "name": "蔬菜",
+                "id": "12",
+                "parentid": "3",
+                "_child": [],
+                "ischild": false
+            },
+            {
+                "name": "茶业1",
+                "id": "13",
+                "parentid": "3",
+                "_child": [],
+                "ischild": false
+            }
+        ],
+        "ischild": true
+    },
+    {
+        "name": "其他农林优势特色产业",
+        "id": "4",
+        "parentid": "0",
+        "_child": [
+            {
+                "name": "中药材（草本）测试多级测试多级测试多级测试多级测试多级测试多级测试多级",
+                "id": "14",
+                "parentid": "4",
+                "_child": [
+                    {
+                        "name":'测试多级1',
+                        "id":"14-1",
+                        "parentid":"14",
+                         "ischild":false,
+                        "_child":[]
+                    }
+                ],
+                "ischild": true
+            },
+            {
+                "name": "中药材（木本）",
+                "id": "15",
+                "parentid": "4",
+                "_child": [],
+                "ischild": false
+            }
+        ],
+        "ischild": true
+    }
+]
+var searchTreeBykey = function searchTreeBykey(tree,key,isnextend){
+    var result = [];
+    var tree = JSON.parse(JSON.stringify(tree));
+    var stack = [];
+    for(var i=0;i<tree.length;i++){
+        stack.push({node:tree[i],path:[tree[i].name]})
+    }
+    while(stack.length){
+        var ele = stack.pop();
+        var node = ele.node;
+        var path = ele.path;
+        if(node.name.indexOf(key)>-1){
+            result.push(Object.assign({},node,{path:[...path]}));
+        }
+        if(node.ischild){
+            for(var i=0;i<node._child.length;i++){
+                var temp = [...path];
+                temp.push(node._child[i].name)
+                stack.push({node:node._child[i],path:temp})
+            }
+        }
+    }
+    return result;
+}
+console.log(searchTreeBykey(tree,'业',true))
+
+
+        
+    </script>
+</body>
+</html>
