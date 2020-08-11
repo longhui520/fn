@@ -33,7 +33,7 @@ function sleep(delay) {
         }, delay);
     })
 }
-var count = 1
+var count = 4
 task(function() {
     if(count--!=1){
         return Promise.reject(1)
