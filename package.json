@@ -19,6 +19,6 @@
   "homepage": "https://github.com/longhui520/fn#readme",
   "devDependencies": {
     "fs-readfile-promise": "^3.0.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   }
 }
